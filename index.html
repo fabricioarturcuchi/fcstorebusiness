@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FC Store Business - Soluções Inteligentes em TI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #0f172a;
+      color: #e2e8f0;
+      scroll-behavior: smooth;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    nav {
+      background-color: #0f172a;
+      border-bottom: 1px solid #1e293b;
+      padding: 15px 30px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav img {
+      height: 50px;
+    }
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+    nav ul li a {
+      color: #e2e8f0;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: #38bdf8;
+    }
+    header {
+      height: 100vh;
+      background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+        url('https://images.unsplash.com/photo-1581091012184-7f11f820bf95?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 120px 20px 60px;
+    }
+    header h1 {
+      font-size: 3.2rem;
+      color: #38bdf8;
+      margin-bottom: 15px;
+      text-shadow: 0 0 10px rgba(56,189,248,0.7);
+    }
+    header p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin-bottom: 30px;
+      color: #cbd5e1;
+    }
+    .button {
+      background-color: #38bdf8;
+      color: #0f172a;
+      padding: 14px 32px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-decoration: none;
+      transition: background-color 0.3s, transform 0.3s;
+      box-shadow: 0 4px 15px rgba(56,189,248,0.6);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .button:hover {
+      background-color: #0ea5e9;
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(14,165,233,0.8);
+    }
+    section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 20px;
+    }
+    h2 {
+      font-size: 2.2rem;
+      color: #38bdf8;
+      margin-bottom: 20px;
+      border-left: 6px solid #38bdf8;
+      padding-left: 15px;
+      font-weight: 700;
+    }
+    h3 {
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      color: #60a5fa;
+    }
+    p {
+      font-size: 1.15rem;
+      color: #cbd5e1;
+      margin-bottom: 25px;
+      max-width: 900px;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 10px;
+    }
+    ul li {
+      font-size: 1.1rem;
+      color: #cbd5e1;
+      margin-bottom: 12px;
+      padding-left: 24px;
+      position: relative;
+    }
+    ul li::before {
+      content: "✔";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #38bdf8;
+      font-weight: 700;
+    }
+    .image-banner {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      max-height: 400px;
+      object-fit: cover;
+    }
+    .contact a {
+      display: block;
+      font-size: 1.2rem;
+      color: #38bdf8;
+      margin-bottom: 15px;
+      text-decoration: none;
+      max-width: 350px;
+    }
+    .contact a:hover {
+      color: #0ea5e9;
+    }
+    footer {
+      background-color: #1e293b;
+      color: #94a3b8;
+      padding: 30px;
+      text-align: center;
+      font-size: 1rem;
+    }
+
+    /* CARD STYLES */
+    .cards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 20px;
+    }
+    .card {
+      background-color: #1e293b;
+      border-radius: 12px;
+      padding: 25px 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      min-height: 320px;
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(56,189,248,0.6);
+    }
+    .card h3 {
+      color: #38bdf8;
+      margin-bottom: 15px;
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+    .card ul li {
+      padding-left: 18px;
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+      color: #cbd5e1;
+    }
+    .card ul li::before {
+      content: "✔";
+      left: -20px;
+      color: #22d3ee;
+      font-weight: 700;
+      position: absolute;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      nav ul {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+        padding-left: 0;
+      }
+      nav ul li {
+        width: 100%;
+      }
+      nav ul li a {
+        font-size: 1.1rem;
+      }
+      header h1 {
+        font-size: 2.5rem;
+      }
+      header p {
+        font-size: 1rem;
+        max-width: 100%;
+      }
+      section {
+        padding: 60px 15px;
+      }
+      .card {
+        min-height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Menu -->
+  <nav>
+    <img src="https://i.postimg.cc/62km0kHc/Design-sem-nome-2.png" alt="Logo FC Store Business" />
+    <ul>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#porque-escolher">Por que Escolher?</a></li>
+      <li><a href="#sustentabilidade">Sustentabilidade</a></li>
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <header>
+    <h1>FC STORE BUSINESS</h1>
+    <p>Soluções em TI com alta performance, segurança e compromisso com o futuro.</p>
+    <a href="https://wa.me/5549933816445" target="_blank" class="button">
+      <i class="fab fa-whatsapp"></i> Solicitar Atendimento
+    </a>
+  </header>
+
+  <!-- Sobre -->
+  <section id="sobre">
+    <img
+      src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?auto=format&fit=crop&w=1600&q=80"
+      alt="Sobre a empresa"
+      class="image-banner"
+    />
+    <h2>Sobre a FC Store Business</h2>
+    <p>
+      Na FC STORE BUSINESS, somos movidos pela paixão por tecnologia e inovação. Nosso compromisso é entregar soluções inteligentes e personalizadas para garantir que seus equipamentos funcionem com máxima performance, segurança e eficiência.
+    </p>
+    <p>
+      Oferecemos manutenção preventiva e corretiva, upgrades, instalação de hardware e software, além de suporte técnico ágil e confiável. Nossa equipe atende desde pequenas demandas até projetos de infraestrutura complexos, sempre com foco em qualidade e custo-benefício.
+    </p>
+    <p>
+      Seja para proteger seus dados, otimizar seus sistemas ou modernizar seu ambiente de TI, conte com a FC STORE BUSINESS — tecnologia como vantagem estratégica para o seu negócio.
+    </p>
+  </section>
+
+  <!-- Por que escolher -->
+  <section id="porque-escolher">
+    <h2>Por que escolher a FC Store Business?</h2>
+    <p>
+      Muito mais do que produtos e serviços, entregamos soluções sob medida, com confiabilidade, agilidade e consciência.
+    </p>
+    <ul>
+      <li>Mais de 10 anos de experiência no setor de TI</li>
+      <li>Atendimento técnico humanizado e transparente</li>
+      <li>Parcerias com as melhores marcas do mercado</li>
+      <li>Soluções que aliam performance, economia e sustentabilidade</li>
+      <li>Suporte remoto e presencial conforme sua necessidade</li>
+    </ul>
+    <p><strong>FC Store Business — Tecnologia com propósito, performance com consciência.</strong></p>
+  </section>
+
+  <!-- Sustentabilidade -->
+  <section id="sustentabilidade">
+    <h2>Sustentabilidade em TI</h2>
+    <p>Acreditamos em um futuro mais verde e responsável. Por isso, adotamos práticas sustentáveis que fazem a diferença:</p>
+    <ul>
+      <li>Upgrades ao invés do descarte precoce de equipamentos</li>
+      <li>Reutilização e reciclagem de componentes eletrônicos</li>
+      <li>Oferecemos soluções com menor impacto ambiental</li>
+    </ul>
+    <p>
+      Tecnologia e sustentabilidade caminham juntas na FC STORE BUSINESS. Inovamos com responsabilidade e respeito ao planeta.
+    </p>
+  </section>
+
+  <!-- Serviços -->
+  <section id="servicos">
+    <h2>Todos os Serviços Oferecidos</h2>
+
+    <div class="cards-container">
+
+      <div class="card">
+        <h3>🖥 Manutenção e Reparo de Hardware</h3>
+        <ul>
+          <li>Diagnóstico completo de hardware</li>
+          <li>Troca e reparo de componentes</li>
+          <li>Configuração e instalação de dispositivos</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>💾 Backup e Recuperação de Dados</h3>
+        <ul>
+          <li>Planos de backup personalizados</li>
+          <li>Recuperação de dados perdidos</li>
+          <li>Segurança e integridade das informações</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>🛡 Segurança da Informação</h3>
+        <ul>
+          <li>Proteção contra vírus e malwares</li>
+          <li>Instalação de antivírus e firewalls</li>
+          <li>Auditoria e monitoramento</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>🔧 Suporte Técnico Remoto e Presencial</h3>
+        <ul>
+          <li>Atendimento rápido e eficiente</li>
+          <li>Assistência para problemas de software</li>
+          <li>Consultoria e orientação personalizada</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>⚙️ Consultoria e Projetos de Infraestrutura</h3>
+        <ul>
+          <li>Planejamento estratégico de TI</li>
+          <li>Instalação e configuração de redes</li>
+          <li>Projetos personalizados para seu negócio</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contato -->
+  <section id="contato" class="contact">
+    <h2>Entre em Contato</h2>
+    <p>Fale conosco para uma consultoria gratuita e personalizada.</p>
+    <a href="https://wa.me/5549933816445" target="_blank" rel="noopener noreferrer">
+      <i class="fab fa-whatsapp"></i> WhatsApp: (49) 93381-6445
+    </a>
+    <a href="mailto:contato@fcstorebusiness.com" target="_blank" rel="noopener noreferrer">
+      <i class="fas fa-envelope"></i> E-mail: contato@fcstorebusiness.com
+    </a>
+  </section>
+
+  <footer>
+    <p>© 2025 FC Store Business - Todos os direitos reservados</p>
+  </footer>
+  
+</body>
+</html>
