@@ -4,10 +4,40 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FC Store Business | Informática & Assistência Técnica</title>
-  <meta name="description" content="FC Store Business - Informática e Assistência Técnica em Chapecó e Oeste de SC. Formatação, manutenção, upgrades, limpeza, suporte remoto e soluções para empresas. Atendimento rápido via WhatsApp.">
 
-  <!-- Performance -->
+  <meta name="description" content="FC Store Business - Informática e Assistência Técnica em Chapecó e Oeste de SC. Formatação, manutenção, upgrades, limpeza, suporte remoto e soluções para empresas. Atendimento rápido via WhatsApp.">
+  <meta property="og:title" content="FC Store Business | Informática & Assistência Técnica">
+  <meta property="og:description" content="Chapecó e Oeste de SC • Formatação • Limpeza • SSD/RAM • Vírus • Suporte">
+  <meta property="og:image" content="https://i.postimg.cc/62km0kHc/Design_sem_nome_(2).png">
+  <meta property="og:type" content="website">
+
   <link rel="preload" as="image" href="https://i.postimg.cc/62km0kHc/Design_sem_nome_(2).png">
+  <link rel="preconnect" href="https://www.google.com">
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"LocalBusiness",
+    "name":"FC Store Business",
+    "image":"https://i.postimg.cc/62km0kHc/Design_sem_nome_(2).png",
+    "description":"Informática e Assistência Técnica em Chapecó e Oeste de SC. Formatação, limpeza interna, upgrade SSD/RAM, remoção de vírus e suporte.",
+    "email":"fcstorebussiness@gmail.com",
+    "address":{
+      "@type":"PostalAddress",
+      "streetAddress":"São João, 540 D - Presidente Médici",
+      "addressLocality":"Chapecó",
+      "addressRegion":"SC",
+      "postalCode":"89801-233",
+      "addressCountry":"BR"
+    },
+    "areaServed":"Chapecó e Oeste de SC",
+    "openingHoursSpecification":[
+      {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"18:00"},
+      {"@type":"OpeningHoursSpecification","dayOfWeek":["Saturday"],"opens":"08:00","closes":"12:00"}
+    ],
+    "telephone":"+55 49 93381-6445"
+  }
+  </script>
 
   <style>
     :root{
@@ -20,6 +50,7 @@
       --shadow2: 0 12px 32px rgba(0,0,0,.45);
       --radius: 18px; --radius2: 26px;
       --t: all .25s ease;
+      --ring: 0 0 0 3px rgba(56,189,248,.18);
     }
 
     *{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
@@ -39,6 +70,15 @@
     .grid{display:grid;gap:18px}
     .muted{color:var(--muted)}
     .sr-only{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+
+    .bg-grid{
+      position:fixed; inset:0; pointer-events:none; opacity:.18; z-index:-1;
+      background-image:
+        linear-gradient(rgba(148,163,184,.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148,163,184,.08) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(circle at 50% 25%, rgba(0,0,0,1), rgba(0,0,0,0));
+    }
 
     .pill{
       display:inline-flex;align-items:center;gap:8px;
@@ -66,7 +106,6 @@
       pointer-events:none;
     }
 
-    /* Top promo bar */
     .promo{
       background:linear-gradient(90deg, rgba(34,197,94,.18), rgba(56,189,248,.18));
       border-bottom:1px solid rgba(148,163,184,.18);
@@ -75,13 +114,11 @@
     }
     .promo .row{
       display:flex;justify-content:space-between;align-items:center;gap:10px;
-      padding:10px 0;
-      flex-wrap:wrap;
+      padding:10px 0; flex-wrap:wrap;
     }
     .promo b{color:#bbf7d0}
     .promo a{color:#bae6fd;text-decoration:underline}
 
-    /* NAV */
     header{
       position:sticky; top:0; z-index:60;
       backdrop-filter: blur(14px);
@@ -124,11 +161,12 @@
       border:1px solid rgba(148,163,184,.35);
       background:rgba(15,23,42,.65);
       color:var(--muted2);
-      font-weight:800; font-size:.9rem;
+      font-weight:900; font-size:.9rem;
       transition:var(--t); cursor:pointer;
-      white-space:nowrap;
+      white-space:nowrap; user-select:none;
     }
     .btn:hover{transform:translateY(-1px); border-color:rgba(248,250,252,.45)}
+    .btn:focus{outline:none; box-shadow:var(--ring)}
     .btn.primary{
       background:linear-gradient(120deg,var(--g1),#16a34a);
       color:#052e1f; border:1px solid rgba(22,163,73,.55);
@@ -137,16 +175,20 @@
     .btn.primary:hover{box-shadow:0 26px 65px rgba(22,163,73,.75)}
     .btn.ghost:hover{background:rgba(15,23,42,.85)}
     .btn.call{
-      background:linear-gradient(120deg, rgba(56,189,248,.25), rgba(15,23,42,.65));
+      background:linear-gradient(120deg, rgba(56,189,248,.26), rgba(15,23,42,.65));
       border-color: rgba(56,189,248,.45);
     }
+    .btn.secondary{background:rgba(2,6,23,.55)}
     .btn .ico{font-size:1.05rem}
 
     .hamb{display:none}
     .hamb button{
       width:44px;height:44px;border-radius:14px;border:1px solid rgba(148,163,184,.35);
       background:rgba(15,23,42,.65); color:var(--txt); cursor:pointer;
+      transition:var(--t);
     }
+    .hamb button:hover{border-color:rgba(56,189,248,.45); transform:translateY(-1px)}
+    .hamb button:focus{outline:none; box-shadow:var(--ring)}
 
     .mobile-menu{
       display:none;
@@ -157,7 +199,6 @@
     .mobile-menu a{color:var(--muted2); padding:10px 12px; border-radius:14px; border:1px solid rgba(148,163,184,.12)}
     .mobile-menu a:hover{border-color:rgba(56,189,248,.35); background:rgba(15,23,42,.55)}
 
-    /* HERO */
     .hero{padding:44px 0 70px;}
     .hero-grid{
       display:grid;
@@ -165,17 +206,16 @@
       gap:26px; align-items:center;
     }
     .title{
-      font-size: clamp(2.2rem, 3.2vw + 1rem, 3.4rem);
+      font-size: clamp(2.2rem, 3.2vw + 1rem, 3.55rem);
       line-height:1.02; margin:14px 0 14px;
+      letter-spacing:-.02em;
     }
     .grad{
       background:linear-gradient(120deg,var(--g1),var(--g2));
       -webkit-background-clip:text; color:transparent;
     }
-    .subtitle{color:var(--muted);font-size:1rem;max-width:560px}
+    .subtitle{color:var(--muted);font-size:1.02rem;max-width:640px}
     .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
-    .trust{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;}
-    .trust .pill{border-color:rgba(34,197,94,.25)}
     .hero-card{padding:18px}
 
     .panel{
@@ -205,11 +245,10 @@
     .status.warn{border-color:rgba(250,204,21,.45);background:rgba(250,204,21,.12);color:#fde68a;}
     .status.bad{border-color:rgba(251,113,133,.5);background:rgba(251,113,133,.12);color:#fecdd3;}
 
-    /* SECTIONS */
     section{padding:0 0 70px}
     .sec-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-end;margin-bottom:18px;}
-    .sec-head h2{font-size:1.65rem}
-    .sec-head p{max-width:650px;color:var(--muted);font-size:.92rem}
+    .sec-head h2{font-size:1.7rem}
+    .sec-head p{max-width:680px;color:var(--muted);font-size:.94rem}
 
     .card{
       background:linear-gradient(180deg, rgba(15,23,42,.85), rgba(15,23,42,.55));
@@ -233,27 +272,24 @@
       border:1px solid rgba(148,163,184,.18);
       margin-bottom:10px; font-size:1.2rem;
     }
-    .card h3{font-size:1.05rem;margin-bottom:6px}
-    .card p{color:var(--muted);font-size:.88rem}
+    .card h3{font-size:1.07rem;margin-bottom:6px}
+    .card p{color:var(--muted);font-size:.9rem}
     .mini{display:flex;justify-content:space-between;align-items:center;margin-top:12px;color:var(--muted);font-size:.82rem; gap:10px; flex-wrap:wrap;}
-    .link{color:#bae6fd; font-weight:900; display:inline-flex; gap:6px; align-items:center;}
+    .link{color:#bae6fd; font-weight:950; display:inline-flex; gap:6px; align-items:center;}
     .link:hover{text-decoration:underline}
 
     .services{grid-template-columns:repeat(4,minmax(0,1fr))}
     .gallery{grid-template-columns:repeat(3,minmax(0,1fr))}
     .packs{grid-template-columns:repeat(3,minmax(0,1fr))}
     .steps{grid-template-columns:repeat(3,minmax(0,1fr))}
-    .testis{grid-template-columns:repeat(3,minmax(0,1fr))}
     .two{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); align-items:start}
-    .three{grid-template-columns:repeat(3,minmax(0,1fr))}
     .region{grid-template-columns:minmax(0,1fr) minmax(0,1fr); align-items:stretch}
 
-    /* TRABALHOS */
     .card.work{padding:0; overflow:hidden;}
     .work-media{
       position: relative;
       width: 100%;
-      height: 220px;
+      height: 230px;
       overflow: hidden;
       border-bottom: 1px solid rgba(148,163,184,.18);
       background: rgba(2,6,23,.35);
@@ -265,11 +301,11 @@
       object-position: center;
       display: block;
       transition: transform .45s ease, filter .45s ease;
-      filter: brightness(.95) contrast(1.05);
+      filter: brightness(.95) contrast(1.06);
     }
     .card.work:hover .work-media img{
-      transform: scale(1.06);
-      filter: brightness(1) contrast(1.1);
+      transform: scale(1.07);
+      filter: brightness(1) contrast(1.12);
     }
     .work-badge{
       position: absolute;
@@ -280,7 +316,7 @@
       padding: 7px 10px;
       border-radius: 999px;
       font-size: .78rem;
-      font-weight: 950;
+      font-weight: 1000;
       color: #052e1f;
       background: linear-gradient(120deg, var(--g1), #16a34a);
       border: 1px solid rgba(22,163,73,.55);
@@ -297,9 +333,9 @@
       left: 10px; right: 10px; bottom: 10px;
       padding: 10px 12px;
       border-radius: 14px;
-      font-size: .84rem;
+      font-size: .85rem;
       color: rgba(248,250,252,.92);
-      background: linear-gradient(180deg, rgba(2,6,23,.15), rgba(2,6,23,.78));
+      background: linear-gradient(180deg, rgba(2,6,23,.10), rgba(2,6,23,.82));
       border: 1px solid rgba(148,163,184,.22);
       backdrop-filter: blur(10px);
       z-index: 2;
@@ -307,19 +343,31 @@
     .work-caption small{
       display:block;
       margin-top: 2px;
-      font-size: .75rem;
+      font-size: .76rem;
       color: rgba(203,213,225,.85);
     }
     .work-body{padding:14px 16px 16px}
 
-    /* Pack highlight */
     .pack-hot{
+      position:relative;
       border-color: rgba(34,197,94,.35);
       background: radial-gradient(circle at 0 0, rgba(34,197,94,.14), rgba(15,23,42,.72));
     }
+    .pack-hot:after{
+      content:"";
+      position:absolute; inset:-2px;
+      border-radius:18px;
+      background:linear-gradient(90deg, rgba(34,197,94,.25), rgba(56,189,248,.25));
+      z-index:0;
+      filter:blur(12px);
+      opacity:.55;
+      pointer-events:none;
+    }
+    .pack-hot > *{ position:relative; z-index:1; }
+
     .price{
-      font-size: 1.75rem;
-      font-weight: 950;
+      font-size: 1.78rem;
+      font-weight: 1000;
       margin: 10px 0 6px;
       background:linear-gradient(120deg,var(--g1),var(--g2));
       -webkit-background-clip:text;color:transparent;
@@ -329,10 +377,9 @@
       display:flex; flex-direction:column; gap:8px;
       margin-top:10px;
     }
-    .ul li{display:flex; gap:8px; color:var(--muted); font-size:.9rem}
-    .ul li span{color:#bbf7d0; font-weight:950}
+    .ul li{display:flex; gap:8px; color:var(--muted); font-size:.92rem}
+    .ul li span{color:#bbf7d0; font-weight:1000}
 
-    /* FAQ */
     details{
       border:1px solid rgba(148,163,184,.22);
       border-radius:14px;
@@ -342,16 +389,15 @@
     }
     summary{
       cursor:pointer;
-      font-weight:950;
+      font-weight:1000;
       list-style:none;
       display:flex; align-items:center; justify-content:space-between; gap:10px;
     }
     summary::-webkit-details-marker{display:none}
-    details p{color:var(--muted); margin-top:8px; font-size:.92rem}
+    details p{color:var(--muted); margin-top:8px; font-size:.94rem}
     .chev{color:var(--muted); transition:var(--t)}
     details[open] .chev{transform:rotate(180deg)}
 
-    /* Form */
     .form{display:grid;gap:10px;margin-top:12px}
     input, textarea, select{
       width:100%;
@@ -362,53 +408,47 @@
       padding:11px 12px;
       outline:none;
       transition:var(--t);
-      font-size:.92rem;
+      font-size:.94rem;
     }
     input:focus, textarea:focus, select:focus{
       border-color:rgba(56,189,248,.5);
-      box-shadow:0 0 0 3px rgba(56,189,248,.18);
+      box-shadow:var(--ring);
     }
     textarea{min-height:110px; resize:vertical}
-    .hint{font-size:.82rem;color:var(--muted); margin-top:8px}
+    .hint{font-size:.84rem;color:var(--muted); margin-top:8px}
 
-    /* Address & map */
-    .addr{
-      display:flex; flex-direction:column; gap:10px;
-      margin-top:10px;
-    }
-    .addr .line{
-      display:flex; gap:10px; align-items:flex-start;
-      color:var(--muted2);
-      font-size:.92rem;
-    }
-    .addr .line span{opacity:.9}
+    .addr{display:flex; flex-direction:column; gap:10px; margin-top:10px;}
+    .addr .line{display:flex; gap:10px; align-items:flex-start; color:var(--muted2); font-size:.94rem;}
     .map-wrap{
-      border-radius:16px;
+      border-radius:18px;
       overflow:hidden;
       border:1px solid rgba(148,163,184,.22);
       background:rgba(2,6,23,.4);
       box-shadow:0 12px 32px rgba(0,0,0,.35);
-      min-height:340px;
+      min-height:360px;
+      position:relative;
     }
     iframe.map{
       width:100%;
-      height:360px;
+      height:390px;
       border:0;
       display:block;
     }
-
-    /* Depoimentos */
-    .quote{
-      font-size:2.2rem; opacity:.25; line-height:1;
-      position:absolute; top:10px; left:12px;
+    .tag{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 10px; border-radius:999px;
+      border:1px solid rgba(148,163,184,.22);
+      background:rgba(2,6,23,.35);
+      color:rgba(248,250,252,.9);
+      font-weight:900; font-size:.78rem;
     }
-    .who{
-      display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:12px;
-      font-size:.82rem; color:var(--muted);
+    .map-overlay{
+      position:absolute; inset:auto 12px 12px 12px;
+      display:flex; gap:10px; flex-wrap:wrap;
+      pointer-events:none;
     }
-    .stars{color:var(--y); font-size:.95rem}
+    .map-overlay .tag{pointer-events:auto}
 
-    /* Floating WhatsApp */
     .float-wa{
       position:fixed; right:18px; bottom:18px; z-index:80;
       width:56px; height:56px; border-radius:18px;
@@ -421,7 +461,6 @@
     .float-wa:hover{transform:translateY(-2px) scale(1.03); box-shadow:0 26px 70px rgba(22,163,73,.8)}
     .float-wa span{font-size:1.4rem}
 
-    /* Back to top */
     .to-top{
       position:fixed; left:18px; bottom:18px; z-index:80;
       width:56px;height:56px;border-radius:18px;
@@ -436,7 +475,6 @@
     .to-top.show{opacity:1; pointer-events:auto}
     .to-top:hover{transform:translateY(-2px); border-color:rgba(56,189,248,.45)}
 
-    /* reveal */
     .reveal{opacity:0; transform:translateY(14px); transition:all .6s ease}
     .reveal.show{opacity:1; transform:translateY(0)}
 
@@ -450,45 +488,244 @@
     .foot a{color:var(--muted2)}
     .foot a:hover{color:var(--txt)}
 
+    /* === CONTADOR DE VAGAS === */
+    .slots-bar{
+      margin-top:14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .slots-pill{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,.22);
+      background:rgba(15,23,42,.55);
+      color:rgba(248,250,252,.92);
+      font-weight:950;
+      font-size:.84rem;
+    }
+    .slots-pill b{color:#bbf7d0}
+    .pulse-dot{
+      width:10px;height:10px;border-radius:999px;
+      background:linear-gradient(120deg,var(--g1),var(--g2));
+      box-shadow:0 0 0 0 rgba(34,197,94,.55);
+      animation:pulseDot 1.6s ease-in-out infinite;
+    }
+    @keyframes pulseDot{
+      0%{ box-shadow:0 0 0 0 rgba(34,197,94,.55); }
+      70%{ box-shadow:0 0 0 14px rgba(34,197,94,0); }
+      100%{ box-shadow:0 0 0 0 rgba(34,197,94,0); }
+    }
+
+    /* === SEL0 "MAIS VENDIDO" (animado) === */
+    .best-badge{
+      position:absolute;
+      top:14px; right:14px;
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      font-weight:1000;
+      font-size:.78rem;
+      color:#052e1f;
+      background:linear-gradient(120deg, var(--y), #f59e0b);
+      border:1px solid rgba(250,204,21,.65);
+      box-shadow:0 16px 45px rgba(250,204,21,.25);
+      z-index:5;
+      animation: bestPulse 1.6s ease-in-out infinite;
+      user-select:none;
+    }
+    .best-badge .spark{
+      width:10px;height:10px;border-radius:999px;
+      background:rgba(5,46,31,.85);
+      box-shadow:0 0 0 0 rgba(250,204,21,.55);
+      animation: spark 1.6s ease-in-out infinite;
+    }
+    @keyframes bestPulse{
+      0%,100%{ transform:translateY(0) scale(1); filter:saturate(1); }
+      50%{ transform:translateY(-2px) scale(1.03); filter:saturate(1.15); }
+    }
+    @keyframes spark{
+      0%{ box-shadow:0 0 0 0 rgba(250,204,21,.55); }
+      70%{ box-shadow:0 0 0 14px rgba(250,204,21,0); }
+      100%{ box-shadow:0 0 0 0 rgba(250,204,21,0); }
+    }
+
+    /* === MODAL OFERTA (sem spam) === */
+    .modal-overlay{
+      position:fixed; inset:0;
+      background:rgba(0,0,0,.62);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+      z-index:999;
+    }
+    .modal{
+      width:min(560px, 100%);
+      border-radius:22px;
+      border:1px solid rgba(148,163,184,.22);
+      background:linear-gradient(180deg, rgba(15,23,42,.92), rgba(15,23,42,.72));
+      box-shadow:0 28px 90px rgba(0,0,0,.65);
+      position:relative;
+      overflow:hidden;
+      transform:translateY(10px) scale(.98);
+      opacity:0;
+      transition:all .28s ease;
+    }
+    .modal.show{
+      transform:translateY(0) scale(1);
+      opacity:1;
+    }
+    .modal:before{
+      content:"";
+      position:absolute; inset:-50%;
+      background:radial-gradient(circle at 0 0, rgba(250,204,21,.18), transparent 58%);
+      pointer-events:none;
+    }
+    .modal-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:12px;
+      padding:18px 18px 0;
+    }
+    .modal-close{
+      width:42px;height:42px;
+      border-radius:14px;
+      border:1px solid rgba(148,163,184,.25);
+      background:rgba(2,6,23,.55);
+      color:var(--txt);
+      cursor:pointer;
+      transition:var(--t);
+    }
+    .modal-close:hover{transform:translateY(-1px); border-color:rgba(56,189,248,.45)}
+    .modal-body{padding:14px 18px 18px;}
+    .modal-title{font-size:1.25rem;font-weight:1000;margin-bottom:8px;}
+    .modal-sub{color:var(--muted);font-size:.95rem;}
+    .offer-box{
+      margin-top:14px;
+      padding:14px;
+      border-radius:18px;
+      border:1px solid rgba(250,204,21,.30);
+      background:rgba(250,204,21,.06);
+    }
+    .offer-line{display:flex; gap:10px; flex-wrap:wrap; align-items:center;font-size:.92rem;color:rgba(248,250,252,.92);}
+    .offer-badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 10px;
+      border-radius:999px;
+      font-weight:1000;
+      background:linear-gradient(120deg, var(--y), #f59e0b);
+      color:#052e1f;
+      border:1px solid rgba(250,204,21,.65);
+    }
+    .modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;}
+    .small-note{margin-top:10px;color:var(--muted);font-size:.82rem;}
+
+    /* Toast (feedback da escassez) */
+    .toast{
+      position:fixed;
+      left:50%;
+      bottom:86px;
+      transform:translateX(-50%);
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(148,163,184,.22);
+      background:rgba(15,23,42,.86);
+      color:rgba(248,250,252,.92);
+      box-shadow:0 16px 50px rgba(0,0,0,.55);
+      font-size:.86rem;
+      opacity:0;
+      pointer-events:none;
+      transition:all .25s ease;
+      z-index:1000;
+    }
+    .toast.show{opacity:1; transform:translateX(-50%) translateY(-4px);}
+
+    /* === ORÇAMENTO RÁPIDO (novo) === */
+    .quote{
+      border:1px solid rgba(148,163,184,.22);
+      background:linear-gradient(180deg, rgba(15,23,42,.86), rgba(15,23,42,.55));
+      border-radius:18px;
+      padding:16px;
+      box-shadow:0 12px 32px rgba(0,0,0,.35);
+    }
+    .quote h3{font-size:1.15rem;margin-bottom:6px}
+    .quote p{color:var(--muted);font-size:.92rem}
+    .quote .row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+    .quote .row2{display:grid;grid-template-columns:1fr;gap:10px;margin-top:10px}
+    .quote .total{
+      margin-top:12px;
+      padding:12px;
+      border-radius:14px;
+      border:1px solid rgba(34,197,94,.35);
+      background:rgba(34,197,94,.08);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .quote .total b{font-size:1.25rem}
+    .quote .mini-note{margin-top:10px;color:var(--muted);font-size:.82rem}
+    .quote .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .chip{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 10px;border-radius:999px;
+      border:1px solid rgba(148,163,184,.22);
+      background:rgba(2,6,23,.35);
+      font-size:.82rem;color:rgba(248,250,252,.92);
+      cursor:pointer; user-select:none;
+      transition:var(--t);
+    }
+    .chip:hover{transform:translateY(-1px);border-color:rgba(56,189,248,.45)}
+    .chip.active{border-color:rgba(34,197,94,.55);background:rgba(34,197,94,.10)}
+
     @media (max-width: 980px){
       .hero-grid{grid-template-columns:1fr}
       .services{grid-template-columns:repeat(2,1fr)}
       .gallery{grid-template-columns:repeat(2,1fr)}
       .packs{grid-template-columns:1fr}
       .steps{grid-template-columns:1fr}
-      .testis{grid-template-columns:repeat(2,1fr)}
       .two{grid-template-columns:1fr}
       .region{grid-template-columns:1fr}
       nav.links{display:none}
       .hamb{display:block}
+      .quote .row{grid-template-columns:1fr}
     }
     @media (max-width: 620px){
       .services{grid-template-columns:1fr}
       .gallery{grid-template-columns:1fr}
-      .testis{grid-template-columns:1fr}
       .brand h1{font-size:.85rem}
       .brand small{display:none}
       .btn{padding:10px 14px}
+      iframe.map{height:360px}
     }
   </style>
 </head>
 
 <body>
-  <!-- Promo -->
+  <div class="bg-grid" aria-hidden="true"></div>
+
   <div class="promo">
     <div class="container">
       <div class="row">
-        <div>📍 <b>Chapecó e Oeste de SC</b> • Atendimento rápido • Envie foto/vídeo para agilizar o orçamento.</div>
+        <div>📍 <b>Chapecó e Oeste de SC</b> • Seg–Sex <b>08:00–18:00</b> • Sáb <b>08:00–12:00</b></div>
         <div style="display:flex;gap:10px;flex-wrap:wrap">
-          <a href="#contato">Orçamento</a>
+          <a href="#orcamento">Orçamento rápido</a>
           <a href="#localizacao">Como chegar</a>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Floating -->
-  <a class="float-wa" href="https://wa.me/554999383816445" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+  <a class="float-wa js-wa" data-decrement="1"
+     href="https://wa.me/5549933816445"
+     target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
     <span>💬</span>
   </a>
   <a class="to-top" id="toTop" href="#inicio" aria-label="Voltar ao topo">⬆️</a>
@@ -507,20 +744,21 @@
         <nav class="links" aria-label="Navegação">
           <a href="#servicos">Serviços</a>
           <a href="#pacotes">Pacotes</a>
+          <a href="#orcamento">Orçamento rápido</a>
           <a href="#como">Como funciona</a>
           <a href="#galeria">Trabalhos</a>
-          <a href="#faq">FAQ</a>
           <a href="#localizacao">Localização</a>
+          <a href="#faq">FAQ</a>
           <a href="#contato">Contato</a>
         </nav>
 
         <div class="cta">
-          <!-- LIGAR AGORA (você pode trocar o número aqui) -->
-          <a class="btn call" href="tel:+5549993838164" aria-label="Ligar agora">
+          <a class="btn call" href="tel:+5549933816445" aria-label="Ligar agora">
             <span class="ico">📞</span> Ligar agora
           </a>
 
-          <a class="btn primary" href="https://wa.me/554999383816445?text=Olá!%20Quero%20um%20orçamento%20na%20FC%20Store%20Business."
+          <a class="btn primary js-wa" data-decrement="1"
+             href="https://wa.me/5549933816445?text=Olá!%20Quero%20um%20orçamento%20na%20FC%20Store%20Business."
              target="_blank" rel="noopener noreferrer">
             <span class="ico">⚡</span> WhatsApp
           </a>
@@ -537,10 +775,11 @@
         <div class="wrap">
           <a href="#servicos" class="mLink">Serviços</a>
           <a href="#pacotes" class="mLink">Pacotes</a>
+          <a href="#orcamento" class="mLink">Orçamento rápido</a>
           <a href="#como" class="mLink">Como funciona</a>
           <a href="#galeria" class="mLink">Trabalhos</a>
-          <a href="#faq" class="mLink">FAQ</a>
           <a href="#localizacao" class="mLink">Localização</a>
+          <a href="#faq" class="mLink">FAQ</a>
           <a href="#contato" class="mLink">Contato</a>
         </div>
       </div>
@@ -548,37 +787,49 @@
   </header>
 
   <main>
-    <!-- HERO -->
     <section class="hero" id="inicio">
       <div class="container">
         <div class="hero-grid">
           <div class="reveal">
-            <span class="pill"><span class="dot"></span> Segunda a Sexta: 08:00–18:00 • Sábado: 08:00–12:00</span>
+            <span class="pill"><span class="dot"></span> Endereço: São João, 540 D — Presidente Médici • Chapecó - SC</span>
 
             <h2 class="title">
-              Tecnologia funcionando <span class="grad">sem dor de cabeça</span>.
+              Seu computador <span class="grad">rápido, seguro e pronto</span> hoje.
             </h2>
 
             <p class="subtitle">
-              Na <b>FC Store Business</b> você resolve travamentos, lentidão, vírus, superaquecimento e upgrades
-              com atendimento transparente e foco no melhor custo-benefício.
+              Atendimento em <b>Chapecó e Oeste de SC</b>. Diagnóstico claro, serviço profissional e atualização pelo WhatsApp.
+              Clique e fale agora — você recebe orientação e orçamento sem enrolação.
             </p>
 
             <div class="hero-actions">
-              <a class="btn primary" href="https://wa.me/554999383816445?text=Olá!%20Preciso%20de%20ajuda%20com%20meu%20computador."
+              <a class="btn primary js-wa" data-decrement="1"
+                 href="https://wa.me/5549933816445?text=Olá!%20Quero%20um%20orçamento%20rápido.%20Posso%20enviar%20foto/vídeo%20do%20problema."
                  target="_blank" rel="noopener noreferrer">
-                <span class="ico">💬</span> Falar agora
+                <span class="ico">💬</span> Orçamento agora no WhatsApp
               </a>
-              <a class="btn call" href="tel:+5549993838164">
+
+              <a class="btn call" href="tel:+5549933816445">
                 <span class="ico">📞</span> Ligar agora
               </a>
-              <a class="btn ghost" href="#localizacao"><span class="ico">📍</span> Como chegar</a>
+
+              <a class="btn ghost" href="#pacotes">
+                <span class="ico">🔥</span> Ver pacotes e valores
+              </a>
+
+              <a class="btn ghost" href="#orcamento">
+                <span class="ico">🧮</span> Orçamento em 30s
+              </a>
             </div>
 
-            <div class="trust">
-              <span class="pill">✅ Orçamento claro</span>
-              <span class="pill">✅ Atualização via WhatsApp</span>
-              <span class="pill">✅ Atendimento: Chapecó e Oeste de SC</span>
+            <div class="slots-bar" id="slotsBar" aria-live="polite">
+              <span class="slots-pill">
+                <span class="pulse-dot"></span>
+                <span>Vagas desta semana: <b id="weeklySlots">--</b></span>
+              </span>
+              <span class="slots-pill">
+                <span>Hoje: <b id="todaySlots">--</b> horários</span>
+              </span>
             </div>
           </div>
 
@@ -591,14 +842,14 @@
 
               <div class="kpis">
                 <div class="kpi">
-                  <small>Horário</small>
-                  <b>08–18h</b>
                   <small>Seg–Sex</small>
+                  <b>08–18h</b>
+                  <small>aberto</small>
                 </div>
                 <div class="kpi">
                   <small>Sábado</small>
                   <b>08–12h</b>
-                  <small>Atendimento</small>
+                  <small>aberto</small>
                 </div>
                 <div class="kpi">
                   <small>Região</small>
@@ -614,8 +865,8 @@
                 <div class="li"><span>Vírus / Segurança</span> <span class="status bad">Avaliar caso</span></div>
               </div>
 
-              <p class="muted" style="margin-top:10px;font-size:.82rem">
-                Endereço: São João, 540 D — Presidente Médici, Chapecó - SC.
+              <p class="muted" style="margin-top:10px;font-size:.84rem">
+                E-mail: <a href="mailto:fcstorebussiness@gmail.com" class="link">fcstorebussiness@gmail.com</a>
               </p>
             </div>
           </div>
@@ -623,7 +874,6 @@
       </div>
     </section>
 
-    <!-- SERVIÇOS -->
     <section id="servicos">
       <div class="container">
         <div class="sec-head reveal">
@@ -640,8 +890,8 @@
             <p>Instalação limpa, drivers, atualizações e otimização de desempenho.</p>
             <div class="mini">
               <span class="pill">Rápido</span>
-              <a class="link" target="_blank" rel="noopener noreferrer"
-                 href="https://wa.me/554999383816445?text=Olá!%20Quero%20orçamento%20para%20formatação%20completa.">Orçar →</a>
+              <a class="link js-wa" data-decrement="1" target="_blank" rel="noopener noreferrer"
+                 href="https://wa.me/5549933816445?text=Olá!%20Quero%20orçamento%20para%20formatação%20completa.">Orçar →</a>
             </div>
           </div>
 
@@ -651,8 +901,8 @@
             <p>Limpeza completa + troca de pasta térmica (reduz temperatura e evita danos).</p>
             <div class="mini">
               <span class="pill">Preventiva</span>
-              <a class="link" target="_blank" rel="noopener noreferrer"
-                 href="https://wa.me/554999383816445?text=Olá!%20Quero%20agendar%20limpeza%20interna%20no%20meu%20equipamento.">Agendar →</a>
+              <a class="link js-wa" data-decrement="1" target="_blank" rel="noopener noreferrer"
+                 href="https://wa.me/5549933816445?text=Olá!%20Quero%20agendar%20limpeza%20interna%20no%20meu%20equipamento.">Agendar →</a>
             </div>
           </div>
 
@@ -662,8 +912,8 @@
             <p>Melhoria de performance com ótimo custo-benefício.</p>
             <div class="mini">
               <span class="pill">Performance</span>
-              <a class="link" target="_blank" rel="noopener noreferrer"
-                 href="https://wa.me/554999383816445?text=Olá!%20Quero%20saber%20sobre%20upgrade%20SSD/RAM%20no%20meu%20equipamento.">Consultar →</a>
+              <a class="link js-wa" data-decrement="1" target="_blank" rel="noopener noreferrer"
+                 href="https://wa.me/5549933816445?text=Olá!%20Quero%20saber%20sobre%20upgrade%20SSD/RAM%20no%20meu%20equipamento.">Consultar →</a>
             </div>
           </div>
 
@@ -673,21 +923,20 @@
             <p>Remoção de ameaças, reforço de segurança e orientação preventiva.</p>
             <div class="mini">
               <span class="pill">Proteção</span>
-              <a class="link" target="_blank" rel="noopener noreferrer"
-                 href="https://wa.me/554999383816445?text=Olá!%20Acho%20que%20meu%20PC%20está%20com%20vírus.%20Pode%20me%20ajudar?">Resolver →</a>
+              <a class="link js-wa" data-decrement="1" target="_blank" rel="noopener noreferrer"
+                 href="https://wa.me/5549933816445?text=Olá!%20Acho%20que%20meu%20PC%20está%20com%20vírus.%20Pode%20me%20ajudar?">Resolver →</a>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PACOTES -->
     <section id="pacotes">
       <div class="container">
         <div class="sec-head reveal">
           <div>
-            <h2>Pacotes (mais vantajoso)</h2>
-            <p>Escolha um pacote pronto ou peça personalização no WhatsApp.</p>
+            <h2>Pacotes com melhor custo-benefício</h2>
+            <p>Escolha o pacote ideal e clique em <b>Contratar</b> para enviar a mensagem automática no WhatsApp.</p>
           </div>
         </div>
 
@@ -695,25 +944,28 @@
           <div class="card reveal">
             <div class="icon">⚡</div>
             <h3>Pacote Performance</h3>
-            <p>Ideal para PC lento/travando (sem precisar formatar em alguns casos).</p>
-            <div class="price">R$ —</div>
+            <p>Para PC lento/travando — melhora a resposta e deixa o sistema mais leve.</p>
+            <div class="price">R$ 120,00</div>
             <ul class="ul">
               <li><span>✓</span> Otimização e ajustes</li>
               <li><span>✓</span> Limpeza de inicialização</li>
               <li><span>✓</span> Programas essenciais</li>
             </ul>
             <div class="mini" style="margin-top:14px">
-              <span class="pill">Mais pedido</span>
-              <a class="link" target="_blank" rel="noopener noreferrer"
-                href="https://wa.me/554999383816445?text=Olá!%20Quero%20o%20Pacote%20Performance%20(PC%20lento).">Quero esse →</a>
+              <span class="pill">Rápido e econômico</span>
+              <a class="btn primary js-wa js-contratar" data-decrement="1" target="_blank" rel="noopener noreferrer"
+                 href="https://wa.me/5549933816445?text=Olá!%20Quero%20contratar%20o%20PACOTE%20PERFORMANCE%20(R$120,00).%0A%0A✅%20Meus%20sintomas:%20PC%20lento/travando.%0A🖥️%20Equipamento:%20Notebook%20ou%20Desktop?%0A📍%20Estou%20em:%20Chapecó%20ou%20Oeste%20SC.%0A%0APosso%20enviar%20foto/vídeo%20do%20problema.">
+                Contratar no WhatsApp
+              </a>
             </div>
           </div>
 
           <div class="card pack-hot reveal">
+            <span class="best-badge"><span class="spark"></span> Mais vendido</span>
             <div class="icon">🔥</div>
             <h3>Pacote Completo (Recomendado)</h3>
-            <p>Desempenho + segurança + estabilidade — o “serviço de confiança”.</p>
-            <div class="price">R$ —</div>
+            <p>O mais completo: desempenho + segurança + estabilidade (serviço “zero dor de cabeça”).</p>
+            <div class="price">R$ 160,00</div>
             <ul class="ul">
               <li><span>✓</span> Formatação profissional</li>
               <li><span>✓</span> Drivers + atualizações</li>
@@ -722,34 +974,110 @@
             </ul>
             <div class="mini" style="margin-top:14px">
               <span class="pill">Melhor custo-benefício</span>
-              <a class="link" target="_blank" rel="noopener noreferrer"
-                href="https://wa.me/554999383816445?text=Olá!%20Quero%20o%20Pacote%20Completo%20(Recomendado).">Quero esse →</a>
+              <a class="btn primary js-wa js-contratar" data-decrement="1" target="_blank" rel="noopener noreferrer"
+                 href="https://wa.me/5549933816445?text=Olá!%20Quero%20contratar%20o%20PACOTE%20COMPLETO%20(RECOMENDADO)%20(R$160,00).%0A%0A✅%20Preciso%20de:%20formatação%20+%20drivers%20+%20otimização%20+%20segurança.%0A🖥️%20Equipamento:%20Notebook%20ou%20Desktop?%0A🔐%20Tem%20dados%20importantes%20para%20backup?%20Sim/Não.%0A%0APosso%20enviar%20foto/vídeo%20e%20informar%20marca/modelo.">
+                Contratar (Mais vendido)
+              </a>
             </div>
           </div>
 
           <div class="card reveal">
             <div class="icon">🧊</div>
             <h3>Pacote Preventivo</h3>
-            <p>Para evitar aquecimento e aumentar vida útil (ideal periodicamente).</p>
-            <div class="price">R$ —</div>
+            <p>Ideal para aquecimento e manutenção — aumenta a vida útil e evita problemas.</p>
+            <div class="price">R$ 100,00</div>
             <ul class="ul">
               <li><span>✓</span> Limpeza interna completa</li>
               <li><span>✓</span> Troca de pasta térmica</li>
               <li><span>✓</span> Diagnóstico de temperatura</li>
             </ul>
             <div class="mini" style="margin-top:14px">
-              <span class="pill">Vida útil</span>
-              <a class="link" target="_blank" rel="noopener noreferrer"
-                href="https://wa.me/554999383816445?text=Olá!%20Quero%20o%20Pacote%20Preventivo%20(limpeza%20+%20pasta%20térmica).">Quero esse →</a>
+              <span class="pill">Evita aquecimento</span>
+              <a class="btn primary js-wa js-contratar" data-decrement="1" target="_blank" rel="noopener noreferrer"
+                 href="https://wa.me/5549933816445?text=Olá!%20Quero%20contratar%20o%20PACOTE%20PREVENTIVO%20(R$100,00).%0A%0A✅%20Meu%20equipamento%20está:%20aquecendo%20/%20fazendo%20barulho%20/%20desligando.%0A🖥️%20Equipamento:%20Notebook%20ou%20Desktop?%0A%0AQuero%20agendar%20um%20horário%20no%20endereço%20(São%20João,%20540%20D%20-%20Chapecó).">
+                Agendar pelo WhatsApp
+              </a>
             </div>
           </div>
         </div>
-
-        <p class="hint reveal">Se você me passar seus valores, eu coloco os preços reais e deixo o site ainda mais “vendedor”.</p>
       </div>
     </section>
 
-    <!-- COMO FUNCIONA -->
+    <!-- ORÇAMENTO RÁPIDO (NOVO) -->
+    <section id="orcamento">
+      <div class="container">
+        <div class="sec-head reveal">
+          <div>
+            <h2>Orçamento rápido (em 30 segundos)</h2>
+            <p>Selecione o que precisa e envie automaticamente no WhatsApp.</p>
+          </div>
+        </div>
+
+        <div class="grid two">
+          <div class="quote reveal">
+            <h3>Monte seu serviço</h3>
+            <p>Os valores base são os pacotes do site. Ajustes adicionais são combinados no WhatsApp.</p>
+
+            <div class="row">
+              <select id="qTipo">
+                <option value="Notebook">Notebook</option>
+                <option value="Desktop">Desktop</option>
+                <option value="Empresa">Empresa (suporte)</option>
+              </select>
+
+              <select id="qPacote">
+                <option value="Performance" data-price="120">Pacote Performance — R$ 120,00</option>
+                <option value="Completo" data-price="160" selected>Pacote Completo (Recomendado) — R$ 160,00</option>
+                <option value="Preventivo" data-price="100">Pacote Preventivo — R$ 100,00</option>
+              </select>
+            </div>
+
+            <div class="chips" aria-label="Adicionais">
+              <span class="chip" data-name="Backup de arquivos" data-price="30">+ Backup (R$ 30)</span>
+              <span class="chip" data-name="Instalação de programas" data-price="20">+ Programas (R$ 20)</span>
+              <span class="chip" data-name="Otimização extra" data-price="20">+ Otimização (R$ 20)</span>
+              <span class="chip" data-name="Visita/atendimento externo" data-price="40">+ Externo (R$ 40)</span>
+            </div>
+
+            <div class="row2">
+              <input id="qNome" type="text" placeholder="Seu nome (opcional)">
+              <textarea id="qObs" placeholder="Descreva o problema (travando, aquecendo, não liga, etc.)"></textarea>
+            </div>
+
+            <div class="total">
+              <span>Total estimado:</span>
+              <b id="qTotal">R$ 160,00</b>
+            </div>
+
+            <div class="row2" style="margin-top:12px">
+              <a class="btn primary js-wa js-contratar" data-decrement="1" id="qSend" target="_blank" rel="noopener noreferrer">
+                💬 Enviar orçamento no WhatsApp
+              </a>
+              <div class="mini-note">Ao enviar, o contador de vagas diminui automaticamente (escassez realista).</div>
+            </div>
+          </div>
+
+          <div class="card reveal">
+            <div class="icon">✅</div>
+            <h3>O que você recebe</h3>
+            <p>Isso aumenta confiança e reduz dúvidas antes do cliente chamar.</p>
+            <ul class="ul" style="margin-top:12px">
+              <li><span>✓</span> Diagnóstico claro (sem enrolação)</li>
+              <li><span>✓</span> Serviço profissional e transparente</li>
+              <li><span>✓</span> Atualização pelo WhatsApp</li>
+              <li><span>✓</span> Recomendações para evitar novos problemas</li>
+            </ul>
+
+            <div class="mini" style="margin-top:14px">
+              <span class="pill">Mais conversão</span>
+              <a class="link js-wa" data-decrement="1" target="_blank" rel="noopener noreferrer"
+                 href="https://wa.me/5549933816445?text=Olá!%20Quero%20um%20orçamento%20rápido%20(orcamento%20do%20site).">Chamar agora →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="como">
       <div class="container">
         <div class="sec-head reveal">
@@ -762,8 +1090,8 @@
         <div class="grid steps">
           <div class="card reveal">
             <div class="icon">1️⃣</div>
-            <h3>Você chama no WhatsApp</h3>
-            <p>Envie uma descrição e, se possível, foto/vídeo do problema.</p>
+            <h3>Chame no WhatsApp</h3>
+            <p>Envie descrição + foto/vídeo do problema (se possível).</p>
           </div>
           <div class="card reveal">
             <div class="icon">2️⃣</div>
@@ -779,7 +1107,6 @@
       </div>
     </section>
 
-    <!-- REGIÃO DE ATENDIMENTO + MAPA -->
     <section id="localizacao">
       <div class="container">
         <div class="sec-head reveal">
@@ -787,7 +1114,7 @@
             <h2>Localização & Região de Atendimento</h2>
             <p>
               Endereço: <b>São João, 540 D - Presidente Médici, Chapecó - SC, 89801-233</b><br>
-              Região de atendimento: <b>Chapecó e Oeste de SC</b>
+              Região: <b>Chapecó e Oeste de SC</b>
             </p>
           </div>
         </div>
@@ -795,46 +1122,48 @@
         <div class="grid region">
           <div class="card reveal">
             <div class="icon">📍</div>
-            <h3>Informações</h3>
-            <p class="muted">Atendimento presencial e suporte conforme necessidade. Consulte disponibilidade.</p>
+            <h3>Atendimento</h3>
+            <p class="muted">Consulte disponibilidade para atendimento na região.</p>
 
             <div class="addr">
-              <div class="line"><span>🕒</span>
+              <div class="line">
+                <span>🕒</span>
                 <div>
-                  <b>Horário de atendimento</b><br>
+                  <b>Horário</b><br>
                   <span class="muted">Segunda a Sexta:</span> 08:00 às 18:00<br>
                   <span class="muted">Sábados:</span> 08:00 às 12:00
                 </div>
               </div>
 
-              <div class="line"><span>📌</span>
+              <div class="line">
+                <span>📌</span>
                 <div>
                   <b>Endereço</b><br>
                   <span class="muted">São João, 540 D - Presidente Médici, Chapecó - SC, 89801-233</span>
                 </div>
               </div>
 
-              <div class="line"><span>🗺️</span>
+              <div class="line">
+                <span>✉️</span>
                 <div>
-                  <b>Região</b><br>
-                  <span class="muted">Chapecó e Oeste de SC</span>
+                  <b>E-mail</b><br>
+                  <a class="link" href="mailto:fcstorebussiness@gmail.com">fcstorebussiness@gmail.com</a>
                 </div>
               </div>
 
               <div class="mini" style="margin-top:8px">
-                <a class="btn call" href="tel:+5549993838164"><span class="ico">📞</span> Ligar agora</a>
-                <a class="btn primary" target="_blank" rel="noopener noreferrer"
-                   href="https://wa.me/554999383816445?text=Olá!%20Quero%20um%20orçamento%20e%20informações%20sobre%20atendimento%20em%20Chapecó/Oeste%20SC.">
+                <a class="btn call" href="tel:+5549933816445"><span class="ico">📞</span> Ligar agora</a>
+                <a class="btn primary js-wa" data-decrement="1" target="_blank" rel="noopener noreferrer"
+                   href="https://wa.me/5549933816445?text=Olá!%20Quero%20um%20orçamento%20e%20informações%20sobre%20atendimento%20em%20Chapecó/Oeste%20SC.">
                   <span class="ico">💬</span> WhatsApp
                 </a>
               </div>
 
-              <p class="hint">Para rotas, abra o mapa e clique em “Rotas”.</p>
+              <p class="hint">No mapa, clique em “Abrir no Google Maps” para rotas.</p>
             </div>
           </div>
 
           <div class="map-wrap reveal" aria-label="Mapa Google">
-            <!-- IFRAME (Google Maps) -->
             <iframe
               class="map"
               loading="lazy"
@@ -842,23 +1171,27 @@
               src="https://www.google.com/maps?q=S%C3%A3o%20Jo%C3%A3o%2C%20540%20D%20-%20Presidente%20M%C3%A9dici%2C%20Chapec%C3%B3%20-%20SC%2C%2089801-233&output=embed"
               title="FC Store Business - Localização">
             </iframe>
+
+            <div class="map-overlay">
+              <span class="tag">📍 São João, 540 D</span>
+              <a class="tag" href="https://www.google.com/maps/search/?api=1&query=S%C3%A3o%20Jo%C3%A3o%2C%20540%20D%20-%20Presidente%20M%C3%A9dici%2C%20Chapec%C3%B3%20-%20SC%2C%2089801-233"
+                 target="_blank" rel="noopener noreferrer">🧭 Abrir no Google Maps</a>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- TRABALHOS -->
     <section id="galeria">
       <div class="container">
         <div class="sec-head reveal">
           <div>
             <h2>Trabalhos</h2>
-            <p>Serviços reais realizados pela FC Store Business (imagens do próprio trabalho).</p>
+            <p>Veja alguns serviços realizados.</p>
           </div>
         </div>
 
         <div class="grid gallery">
-          <!-- LIMPEZA -->
           <article class="card work reveal"
             data-title="Limpeza interna + pasta térmica"
             data-sub="Redução de temperatura • Prevenção de danos • Melhor desempenho">
@@ -874,7 +1207,6 @@
               />
               <div class="work-caption"></div>
             </div>
-
             <div class="work-body">
               <div class="icon">🧹</div>
               <h3>Limpeza interna + pasta térmica</h3>
@@ -883,7 +1215,6 @@
             </div>
           </article>
 
-          <!-- SSD/RAM -->
           <article class="card work reveal"
             data-title="Upgrade SSD / RAM"
             data-sub="Mais velocidade • Melhor resposta • Custo-benefício">
@@ -899,7 +1230,6 @@
               />
               <div class="work-caption"></div>
             </div>
-
             <div class="work-body">
               <div class="icon">⚙️</div>
               <h3>Upgrade SSD / RAM</h3>
@@ -908,7 +1238,6 @@
             </div>
           </article>
 
-          <!-- VÍRUS -->
           <article class="card work reveal"
             data-title="Remoção de vírus e segurança"
             data-sub="Limpeza de ameaças • Proteção reforçada • Boas práticas">
@@ -924,7 +1253,6 @@
               />
               <div class="work-caption"></div>
             </div>
-
             <div class="work-body">
               <div class="icon">🛡️</div>
               <h3>Remoção de vírus e segurança</h3>
@@ -936,13 +1264,11 @@
       </div>
     </section>
 
-    <!-- FAQ + CONTATO -->
     <section id="faq">
       <div class="container">
         <div class="sec-head reveal">
           <div>
             <h2>FAQ & Contato</h2>
-            <p>Respostas rápidas + formulário que monta sua mensagem e envia no WhatsApp.</p>
           </div>
         </div>
 
@@ -968,8 +1294,8 @@
 
           <div class="card reveal" id="contato">
             <div class="icon">📨</div>
-            <h3>Montar mensagem e enviar no WhatsApp</h3>
-            <p class="muted">Preencha e clique em “Enviar”. A mensagem vai pronta.</p>
+            <h3>Contato</h3>
+            <p class="muted">Preencha e clique em “Enviar”.</p>
 
             <form class="form" id="leadForm">
               <input id="nome" type="text" placeholder="Seu nome" />
@@ -996,11 +1322,11 @@
               </button>
 
               <div class="mini" style="margin-top:8px">
-                <a class="btn call" href="tel:+5549993838164"><span class="ico">📞</span> Ligar agora</a>
-                <a class="btn ghost" href="#localizacao"><span class="ico">📍</span> Ver no mapa</a>
+                <a class="btn call" href="tel:+5549933816445"><span class="ico">📞</span> Ligar agora</a>
+                <a class="btn secondary" href="mailto:fcstorebussiness@gmail.com"><span class="ico">✉️</span> Enviar e-mail</a>
               </div>
 
-              <p class="hint">Horário: Seg–Sex 08:00–18:00 • Sáb 08:00–12:00 • Região: Chapecó e Oeste de SC.</p>
+              <p class="hint">WhatsApp: (49) 93381-6445 • E-mail: fcstorebussiness@gmail.com</p>
             </form>
           </div>
         </div>
@@ -1016,16 +1342,55 @@
         <div style="display:flex; gap:12px; flex-wrap:wrap">
           <a href="#servicos">Serviços</a>
           <a href="#pacotes">Pacotes</a>
+          <a href="#orcamento">Orçamento</a>
           <a href="#localizacao">Localização</a>
-          <a href="#contato">Contato</a>
+          <a href="mailto:fcstorebussiness@gmail.com">E-mail</a>
         </div>
       </div>
     </div>
   </footer>
 
+  <!-- MODAL OFERTA -->
+  <div class="modal-overlay" id="offerOverlay" role="dialog" aria-modal="true" aria-label="Oferta da Semana">
+    <div class="modal" id="offerModal">
+      <div class="modal-head">
+        <div>
+          <div class="modal-title">Oferta da Semana 🔥</div>
+          <div class="modal-sub">Aproveite e garanta seu horário com desconto.</div>
+        </div>
+        <button class="modal-close" id="offerClose" aria-label="Fechar">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="offer-box">
+          <div class="offer-line">
+            <span class="offer-badge">10% OFF</span>
+            <span><b>Pacote Preventivo</b> (Limpeza interna + pasta térmica)</span>
+          </div>
+          <div class="offer-line" style="margin-top:8px">
+            ⏳ Válido até <b id="offerDeadline">sábado</b> • Restam <b id="offerSlots">--</b> horários
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <a class="btn primary js-wa js-contratar" data-decrement="1" id="offerBtn" target="_blank" rel="noopener noreferrer">
+            💬 Quero 10% no Preventivo
+          </a>
+          <button class="btn secondary" id="offerNope" type="button">Não agora</button>
+        </div>
+
+        <div class="small-note">Sem spam: se você fechar, eu não mostro de novo hoje.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">Vaga reservada ✅ Restam poucas disponíveis.</div>
+
   <script>
-    // CONFIG
-    const WHATSAPP_NUMBER = "554999383816445";
+    // ========= CONFIG =========
+    const WHATSAPP_NUMBER = "5549933816445";
+    const STORE_ADDRESS = "São João, 540 D - Presidente Médici, Chapecó - SC";
+    const SERVICE_REGION = "Chapecó e Oeste de SC";
 
     // Year
     document.getElementById("year").textContent = new Date().getFullYear();
@@ -1034,7 +1399,6 @@
     const btnMenu = document.getElementById("btnMenu");
     const mobileMenu = document.getElementById("mobileMenu");
     const mLinks = document.querySelectorAll(".mLink");
-
     if (btnMenu) {
       btnMenu.addEventListener("click", () => {
         const open = mobileMenu.style.display === "block";
@@ -1047,24 +1411,257 @@
       btnMenu.textContent = "☰";
     }));
 
-    // Reveal animation
+    // Reveal
     const items = document.querySelectorAll(".reveal");
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("show"); });
     }, { threshold: 0.12 });
     items.forEach(el => io.observe(el));
 
-    // Legenda automática (data-title e data-sub)
+    // Legenda automática (trabalhos)
     document.querySelectorAll(".card.work").forEach(card => {
       const title = card.getAttribute("data-title") || "Serviço Real";
       const sub = card.getAttribute("data-sub") || "";
       const caption = card.querySelector(".work-caption");
-      if (caption) {
-        caption.innerHTML = `<strong>${title}</strong>${sub ? `<small>${sub}</small>` : ""}`;
-      }
+      if (caption) caption.innerHTML = `<strong>${title}</strong>${sub ? `<small>${sub}</small>` : ""}`;
     });
 
-    // Form -> WhatsApp
+    // Back to top
+    const toTop = document.getElementById("toTop");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 600) toTop.classList.add("show");
+      else toTop.classList.remove("show");
+    });
+
+    // ========= VAGAS (contador) =========
+    function isOpenNow(now){
+      const d = now.getDay();
+      const h = now.getHours() + now.getMinutes()/60;
+      if (d >= 1 && d <= 5) return (h >= 8 && h < 18);
+      if (d === 6) return (h >= 8 && h < 12);
+      return false;
+    }
+
+    function dailySeedNumber(min, max){
+      const now = new Date();
+      const key = now.getFullYear()*10000 + (now.getMonth()+1)*100 + now.getDate();
+      let x = Math.sin(key) * 10000;
+      x = x - Math.floor(x);
+      const n = Math.floor(min + x * (max - min + 1));
+      return Math.max(min, Math.min(max, n));
+    }
+
+    function calcTodaySlotsRaw(){
+      const now = new Date();
+      const d = now.getDay();
+      if (d === 0) return 0;
+
+      const base = (d >= 1 && d <= 5) ? dailySeedNumber(3, 6) : dailySeedNumber(2, 4);
+
+      if (!isOpenNow(now)) {
+        const h = now.getHours() + now.getMinutes()/60;
+        const closedAfter = (d >= 1 && d <= 5) ? 18 : 12;
+        const opensAt = 8;
+        if (h >= closedAfter) return 0;
+        if (h < opensAt) return base;
+      }
+
+      const minutes = now.getHours()*60 + now.getMinutes();
+      const openMin = 8*60;
+      const closeMin = (d >= 1 && d <= 5) ? 18*60 : 12*60;
+      const totalMin = closeMin - openMin;
+      const passed = Math.max(0, Math.min(totalMin, minutes - openMin));
+
+      const interval = 90;
+      const used = Math.floor(passed / interval);
+      return Math.max(0, base - used);
+    }
+
+    function calcWeeklySlotsRaw(){
+      const now = new Date();
+      const d = now.getDay();
+      let daysLeft;
+      if (d === 0) daysLeft = 6;
+      else daysLeft = 7 - d;
+
+      const today = calcTodaySlotsRaw();
+
+      const avgWeekday = 4;
+      const avgSaturday = 3;
+
+      let future = 0;
+      for (let i = 1; i <= daysLeft; i++){
+        const day = (d + i) % 7;
+        if (day === 0) continue;
+        future += (day === 6) ? avgSaturday : avgWeekday;
+      }
+
+      const tweak = dailySeedNumber(-1, 2);
+      return Math.max(0, today + future + tweak);
+    }
+
+    // ========= ESCASSEZ REALISTA (diminui ao clicar) =========
+    function nextSaturdayAtNoon(){
+      const now = new Date();
+      const d = now.getDay();
+      const daysToSat = (6 - d + 7) % 7;
+      const target = new Date(now);
+      target.setDate(now.getDate() + daysToSat);
+      target.setHours(12, 0, 0, 0);
+      return target;
+    }
+
+    function dateKey(now=new Date()){
+      return `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,"0")}-${String(now.getDate()).padStart(2,"0")}`;
+    }
+    function weekKeyUntilSaturday(){
+      const dl = nextSaturdayAtNoon();
+      return `week_until_${dl.getFullYear()}_${dl.getMonth()+1}_${dl.getDate()}`;
+    }
+    function getClaimedToday(){
+      const k = `claimed_today_${dateKey()}`;
+      return Number(localStorage.getItem(k) || "0");
+    }
+    function setClaimedToday(v){
+      const k = `claimed_today_${dateKey()}`;
+      localStorage.setItem(k, String(Math.max(0, v)));
+    }
+    function getClaimedWeek(){
+      const k = `claimed_${weekKeyUntilSaturday()}`;
+      return Number(localStorage.getItem(k) || "0");
+    }
+    function setClaimedWeek(v){
+      const k = `claimed_${weekKeyUntilSaturday()}`;
+      localStorage.setItem(k, String(Math.max(0, v)));
+    }
+
+    function calcTodaySlots(){
+      return Math.max(0, calcTodaySlotsRaw() - getClaimedToday());
+    }
+    function calcWeeklySlots(){
+      return Math.max(0, calcWeeklySlotsRaw() - getClaimedWeek());
+    }
+
+    function showToast(text){
+      const t = document.getElementById("toast");
+      if (!t) return;
+      t.textContent = text;
+      t.classList.add("show");
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(()=> t.classList.remove("show"), 1800);
+    }
+
+    function decrementSlots(by=1){
+      const todayRaw = calcTodaySlotsRaw();
+      const weekRaw = calcWeeklySlotsRaw();
+
+      const claimedToday = getClaimedToday();
+      const claimedWeek = getClaimedWeek();
+
+      const newClaimedToday = Math.min(todayRaw, claimedToday + by);
+      const newClaimedWeek  = Math.min(weekRaw,  claimedWeek + by);
+
+      setClaimedToday(newClaimedToday);
+      setClaimedWeek(newClaimedWeek);
+
+      renderSlots();
+      showToast("Vaga reservada ✅ Contador atualizado.");
+    }
+
+    function renderSlots(){
+      const today = calcTodaySlots();
+      const week = calcWeeklySlots();
+
+      const elToday = document.getElementById("todaySlots");
+      const elWeek = document.getElementById("weeklySlots");
+      if (elToday) elToday.textContent = String(today);
+      if (elWeek) elWeek.textContent = String(week);
+
+      const elOfferSlots = document.getElementById("offerSlots");
+      if (elOfferSlots) elOfferSlots.textContent = String(Math.max(1, Math.min(week, 6)));
+    }
+
+    // ========= MODAL OFERTA (sem spam) =========
+    function shouldShowOffer(){
+      const now = new Date();
+      const deadline = nextSaturdayAtNoon();
+      if (now >= deadline) return false;
+
+      const offerId = `offer_${deadline.getFullYear()}_${deadline.getMonth()+1}_${deadline.getDate()}`;
+      const lastShown = Number(localStorage.getItem(offerId + "_shownAt") || "0");
+      const dismissed = localStorage.getItem(offerId + "_dismissed") === "1";
+
+      if (dismissed) return false;
+      if (lastShown && (now.getTime() - lastShown) < 24*60*60*1000) return false;
+      return true;
+    }
+
+    function openOfferModal(){
+      const overlay = document.getElementById("offerOverlay");
+      const modal = document.getElementById("offerModal");
+      if (!overlay || !modal) return;
+
+      overlay.style.display = "flex";
+      requestAnimationFrame(() => modal.classList.add("show"));
+
+      const elDeadline = document.getElementById("offerDeadline");
+      if (elDeadline) elDeadline.textContent = "sábado 12:00";
+
+      const offerBtn = document.getElementById("offerBtn");
+      if (offerBtn){
+        const msg =
+`Olá! Quero aproveitar a OFERTA de 10% no PACOTE PREVENTIVO.
+✅ Serviço: Limpeza interna + pasta térmica (com desconto)
+📍 Endereço: ${STORE_ADDRESS}
+🗺️ Região: ${SERVICE_REGION}
+
+Quero agendar um horário.`;
+        offerBtn.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+      }
+
+      const dl = nextSaturdayAtNoon();
+      const offerId = `offer_${dl.getFullYear()}_${dl.getMonth()+1}_${dl.getDate()}`;
+      localStorage.setItem(offerId + "_shownAt", String(Date.now()));
+    }
+
+    function closeOfferModal(dismiss=false){
+      const overlay = document.getElementById("offerOverlay");
+      const modal = document.getElementById("offerModal");
+      if (!overlay || !modal) return;
+
+      modal.classList.remove("show");
+      setTimeout(() => { overlay.style.display = "none"; }, 220);
+
+      if (dismiss){
+        const dl = nextSaturdayAtNoon();
+        const offerId = `offer_${dl.getFullYear()}_${dl.getMonth()+1}_${dl.getDate()}`;
+        localStorage.setItem(offerId + "_dismissed", "1");
+      }
+    }
+
+    function setupOfferModal(){
+      const closeBtn = document.getElementById("offerClose");
+      const nopeBtn = document.getElementById("offerNope");
+      const overlay = document.getElementById("offerOverlay");
+
+      if (closeBtn) closeBtn.addEventListener("click", () => closeOfferModal(true));
+      if (nopeBtn) nopeBtn.addEventListener("click", () => closeOfferModal(true));
+
+      if (overlay){
+        overlay.addEventListener("click", (e) => {
+          if (e.target === overlay) closeOfferModal(true);
+        });
+      }
+
+      if (shouldShowOffer()){
+        setTimeout(() => { if (shouldShowOffer()) openOfferModal(); }, 7000);
+        document.addEventListener("mouseleave", (e) => {
+          if (e.clientY <= 0 && shouldShowOffer()) openOfferModal();
+        });
+      }
+    }
+
+    // ========= FORM -> WHATSAPP (com decrement) =========
     document.getElementById("leadForm").addEventListener("submit", function (e) {
       e.preventDefault();
 
@@ -1079,19 +1676,94 @@ Nome: ${nome || "Não informado"}
 Tipo: ${tipo}
 Serviço: ${servico}
 Problema: ${problema || "Não informado"}
-Região: Chapecó e Oeste de SC
+Endereço: ${STORE_ADDRESS}
+Região: ${SERVICE_REGION}
 `;
 
+      decrementSlots(1);
       const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
       window.open(url, "_blank", "noopener,noreferrer");
     });
 
-    // Back to top
-    const toTop = document.getElementById("toTop");
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 600) toTop.classList.add("show");
-      else toTop.classList.remove("show");
-    });
+    // ========= CLICK TRACK (diminui ao clicar em "Contratar" / links WA) =========
+    function setupScarcityClicks(){
+      document.querySelectorAll(".js-contratar, .js-wa").forEach(el => {
+        el.addEventListener("click", () => {
+          const by = Number(el.getAttribute("data-decrement") || "1");
+          decrementSlots(by);
+        }, { passive:true });
+      });
+    }
+
+    // ========= ORÇAMENTO RÁPIDO (novo) =========
+    function brl(v){
+      return v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
+    }
+
+    function setupQuickQuote(){
+      const qPacote = document.getElementById("qPacote");
+      const qTipo = document.getElementById("qTipo");
+      const qNome = document.getElementById("qNome");
+      const qObs = document.getElementById("qObs");
+      const qTotal = document.getElementById("qTotal");
+      const qSend = document.getElementById("qSend");
+      if(!qPacote || !qTotal || !qSend) return;
+
+      const chips = Array.from(document.querySelectorAll(".chip"));
+
+      function calc(){
+        const opt = qPacote.selectedOptions[0];
+        const base = Number(opt?.dataset?.price || "0");
+        let addons = 0;
+        const addonsList = [];
+
+        chips.forEach(ch => {
+          const name = ch.dataset.name;
+          const price = Number(ch.dataset.price || "0");
+          if(ch.classList.contains("active")){
+            addons += price;
+            addonsList.push(`${name} (+${brl(price)})`);
+          }
+        });
+
+        const total = base + addons;
+        qTotal.textContent = brl(total);
+
+        const nome = (qNome?.value || "").trim();
+        const tipo = qTipo?.value || "Não informado";
+        const pacoteTxt = opt?.textContent?.trim() || "Pacote";
+        const obs = (qObs?.value || "").trim();
+
+        const msg =
+`Olá! Quero um orçamento (site FC Store Business).
+Nome: ${nome || "Não informado"}
+Tipo: ${tipo}
+Pacote: ${pacoteTxt}
+Adicionais: ${addonsList.length ? addonsList.join(", ") : "Nenhum"}
+Total estimado: ${brl(total)}
+Problema: ${obs || "Não informado"}
+
+Endereço: ${STORE_ADDRESS}
+Região: ${SERVICE_REGION}`;
+
+        qSend.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+      }
+
+      chips.forEach(ch => ch.addEventListener("click", () => { ch.classList.toggle("active"); calc(); }));
+      qPacote.addEventListener("change", calc);
+      if(qTipo) qTipo.addEventListener("change", calc);
+      if(qNome) qNome.addEventListener("input", calc);
+      if(qObs) qObs.addEventListener("input", calc);
+
+      calc();
+    }
+
+    // ========= INIT =========
+    renderSlots();
+    setInterval(renderSlots, 60 * 1000);
+    setupOfferModal();
+    setupScarcityClicks();
+    setupQuickQuote();
   </script>
 </body>
 </html>
